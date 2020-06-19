@@ -1,0 +1,95 @@
+process {
+    Id = "deploymentprocess-Projects-2"
+    OwnerId = "Projects-2"
+    IsFrozen = false
+    Version = 1
+    SpaceId = "Spaces-1"
+    Steps {
+        run_an_aws_cli_script {
+            Id = "d4f81a52-3dd5-4850-a3fd-4bab56ff9962"
+            Name = "Run an AWS CLI Script"
+            Condition = "Success"
+            StartTrigger = "StartAfterPrevious"
+            PackageRequirement = "LetOctopusDecide"
+            Actions {
+                run_an_aws_cli_script {
+                    Id = "13a66b0e-9f21-4ea2-9d7a-d0fc6070f929"
+                    Name = "Run an AWS CLI Script"
+                    ActionType = "Octopus.AwsRunScript"
+                    Container {
+                    }
+                    IsDisabled = false
+                    IsRequired = false
+                    Environments = []
+                    ExcludedEnvironments = []
+                    Channels = []
+                    TenantTags = []
+                    Packages {
+                    }
+                    Condition = "Success"
+                    Properties {
+                        octopus.action.script.scriptsource {
+                            Key = "Octopus.Action.Script.ScriptSource"
+                            Value {
+                                Value = "Inline"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.syntax {
+                            Key = "Octopus.Action.Script.Syntax"
+                            Value {
+                                Value = "PowerShell"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.aws.assumerole {
+                            Key = "Octopus.Action.Aws.AssumeRole"
+                            Value {
+                                Value = "False"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.awsaccount.useinstancerole {
+                            Key = "Octopus.Action.AwsAccount.UseInstanceRole"
+                            Value {
+                                Value = "False"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.awsaccount.variable {
+                            Key = "Octopus.Action.AwsAccount.Variable"
+                            Value {
+                                Value = "Aws"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.aws.region {
+                            Key = "Octopus.Action.Aws.Region"
+                            Value {
+                                Value = "abc"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.scriptbody {
+                            Key = "Octopus.Action.Script.ScriptBody"
+                            Value {
+                                Value = ";"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                    }
+                }
+            }
+            Properties {
+            }
+        }
+    }
+    RelatedDocumentIds = []
+}
